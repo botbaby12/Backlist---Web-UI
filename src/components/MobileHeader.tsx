@@ -1,24 +1,54 @@
-import { Search, LayoutList, DollarSign } from 'lucide-react';
+import { useState } from 'react';
+import { Search, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
-export function MobileHeader() {
+interface MobileHeaderProps {
+  searchQuery: string;
+  onSearchChange: (value: string) => void;
+}
+
+export function MobileHeader({ searchQuery, onSearchChange }: MobileHeaderProps) {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
   return (
-    <header className="md:hidden flex items-center justify-between p-4 bg-card border-b border-border sticky top-0 z-40">
-      <h1 className="text-xl font-bold text-foreground tracking-tight">
-        Backlist
-      </h1>
-      
-      <div className="flex items-center gap-2">
-        <Button variant="ghost" size="icon" className="text-muted-foreground">
-          <LayoutList className="h-5 w-5" />
-        </Button>
-        <Button variant="ghost" size="icon" className="text-muted-foreground">
-          <DollarSign className="h-5 w-5" />
-        </Button>
-        <Button variant="ghost" size="icon" className="text-muted-foreground">
-          <Search className="h-5 w-5" />
-        </Button>
-      </div>
+    <header className="md:hidden flex items-center gap-3 p-4 bg-card border-b border-border sticky top-0 z-40">
+      {isSearchOpen ? (
+        <>
+          <Input
+            type="search"
+            placeholder="Search listings..."
+            value={searchQuery}
+            onChange={(e) => onSearchChange(e.target.value)}
+            className="flex-1"
+            autoFocus
+          />
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            onClick={() => {
+              setIsSearchOpen(false);
+              onSearchChange('');
+            }}
+          >
+            <X className="h-5 w-5" />
+          </Button>
+        </>
+      ) : (
+        <>
+          <h1 className="text-xl font-bold text-foreground tracking-tight flex-1">
+            Backlist
+          </h1>
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="text-muted-foreground"
+            onClick={() => setIsSearchOpen(true)}
+          >
+            <Search className="h-5 w-5" />
+          </Button>
+        </>
+      )}
     </header>
   );
 }
