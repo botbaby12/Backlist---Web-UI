@@ -1,9 +1,10 @@
 import { NavLink } from '@/components/NavLink';
-import { List, Heart, Settings } from 'lucide-react';
+import { List, Bell, Heart, Settings } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
   { to: '/', label: 'Feed', icon: List },
+  { to: '/alerts', label: 'Alerts', icon: Bell },
   { to: '/saved', label: 'Saved', icon: Heart },
   { to: '/settings', label: 'Settings', icon: Settings },
 ];
