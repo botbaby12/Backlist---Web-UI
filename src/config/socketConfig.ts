@@ -2,8 +2,8 @@
 // Replace SOCKET_SERVER_URL with your production WebSocket server URL
 
 export const SOCKET_CONFIG = {
-  // TODO: Update this with your production server URL
-  serverUrl: "https://your-alerts-server.com",
+  // Production WebSocket server
+  serverUrl: "http://159.223.113.123:3000",
   
   // Reconnection settings
   reconnectionAttempts: 5,
