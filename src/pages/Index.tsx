@@ -14,7 +14,7 @@ const Index = () => {
   );
 
   return (
-    <AppLayout>
+    <AppLayout searchQuery={searchQuery} onSearchChange={setSearchQuery}>
       {/* Desktop header */}
       <div className="hidden md:flex items-center justify-between p-6 border-b border-border">
         <h2 className="text-2xl font-bold text-foreground">Listings</h2>
