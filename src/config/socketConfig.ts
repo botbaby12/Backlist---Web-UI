@@ -3,7 +3,7 @@
 
 export const SOCKET_CONFIG = {
   // Production WebSocket server
-  serverUrl: "http://159.223.113.123:3000",
+  serverUrl: "https://thirty-pumas-notice.loca.lt",
   
   // Reconnection settings
   reconnectionAttempts: 5,
