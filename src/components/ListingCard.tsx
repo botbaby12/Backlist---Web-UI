@@ -32,13 +32,13 @@ export function ListingCard({ listing, isSaved, onToggleSave }: ListingCardProps
         </AspectRatio>
         
         {/* Source badge */}
-        <div className="absolute top-2 left-2">
-          <SourceIcon source={listing.source} className="text-[10px] px-1.5 py-0.5" />
+        <div className="absolute top-1.5 left-1.5 md:top-2 md:left-2">
+          <SourceIcon source={listing.source} className="text-[8px] md:text-[10px] px-1 md:px-1.5 py-0.5" />
         </div>
         
         {/* Deal badge */}
-        <div className="absolute top-2 right-2">
-          <DealBadge grade={listing.dealGrade} className="text-[10px] px-2 py-0.5" />
+        <div className="absolute bottom-10 left-1.5 md:top-2 md:right-2 md:bottom-auto md:left-auto">
+          <DealBadge grade={listing.dealGrade} className="text-[8px] md:text-[10px] px-1.5 md:px-2 py-0.5" />
         </div>
         
         {/* Save button */}
