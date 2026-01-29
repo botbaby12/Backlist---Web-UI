@@ -1,10 +1,11 @@
 import { NavLink } from '@/components/NavLink';
-import { List, Heart, HelpCircle, LogOut } from 'lucide-react';
+import { List, Heart, Bell, HelpCircle, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 const navItems = [
   { to: '/', label: 'Listings', icon: List },
+  { to: '/alerts', label: 'Alerts', icon: Bell },
   { to: '/saved', label: 'Saved', icon: Heart },
   { to: '/help', label: 'Help Center', icon: HelpCircle },
 ];
