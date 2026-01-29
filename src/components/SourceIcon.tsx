@@ -1,8 +1,12 @@
 import { ListingSource } from '@/types/listing';
 import { cn } from '@/lib/utils';
-import craigslistLogo from '@/assets/logos/craigslist-logo.png';
-import autotraderLogo from '@/assets/logos/autotrader-logo.png';
-import facebookLogo from '@/assets/logos/facebook-logo.png';
+
+const sourceConfig: Record<ListingSource, { label: string; bgClass: string }> = {
+  craigslist: { label: 'Craigslist', bgClass: 'bg-purple-600' },
+  facebook: { label: 'Facebook', bgClass: 'bg-blue-600' },
+  carscom: { label: 'cars.com', bgClass: 'bg-purple-500' },
+  autotrader: { label: 'Autotrader', bgClass: 'bg-orange-500' },
+};
 
 interface SourceIconProps {
   source: ListingSource;
@@ -10,44 +14,17 @@ interface SourceIconProps {
 }
 
 export function SourceIcon({ source, className }: SourceIconProps) {
-  const getLogoSrc = () => {
-    switch (source) {
-      case 'craigslist':
-        return craigslistLogo;
-      case 'autotrader':
-        return autotraderLogo;
-      case 'facebook':
-        return facebookLogo;
-      case 'carscom':
-        return null; // Use text fallback
-    }
-  };
-
-  const logoSrc = getLogoSrc();
-
-  if (logoSrc) {
-    return (
-      <div className={cn(
-        'w-7 h-7 rounded-md overflow-hidden bg-white shadow-sm flex items-center justify-center',
-        className
-      )}>
-        <img 
-          src={logoSrc} 
-          alt={source} 
-          className="w-full h-full object-contain p-0.5"
-        />
-      </div>
-    );
-  }
-
-  // Fallback for cars.com - purple gradient like their branding
+  const config = sourceConfig[source];
+  
   return (
-    <div className={cn(
-      'px-1.5 py-0.5 rounded text-[9px] font-bold text-white shadow-sm',
-      'bg-gradient-to-r from-purple-600 to-purple-500',
-      className
-    )}>
-      Cars
+    <div
+      className={cn(
+        'px-2 py-1 rounded text-[10px] font-semibold text-white shadow-sm',
+        config.bgClass,
+        className
+      )}
+    >
+      {config.label}
     </div>
   );
 }
